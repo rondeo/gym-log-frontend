@@ -1,0 +1,58 @@
+<div class="main" *ngIf="currentRoutine; else notShow">
+  <form class="log-routine-form" [formGroup]="logRoutineForm" (ngSubmit)="onSubmit()" *ngIf="logRoutineForm">
+
+    <h3 class="title">Choose<br>Routine</h3>
+    <div class="select-routine-container">
+      <mat-form-field>
+        <mat-label>Select routine</mat-label>
+        <mat-select [value]="currentRoutine.name">
+          <mat-option *ngFor="let routine of routines; let i = index" (click)="changeCurrentRoutine(i)"
+            [value]="routine.name">{{ routine.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div formArrayName="routineLog">
+      <div *ngFor="let exercise of logRoutineForm.get('routineLog').controls; let i = index" [formGroupName]="i"
+        class="set-list-item">
+        <h3 class="exercise-name">{{exercise.get('exerciseName').value}}</h3>
+        <div formArrayName="sets">
+          <div *ngFor="let set of exercise.get('sets').controls; let j = index" [formGroupName]="j"
+            class="set-list-item">
+            <h6 class="setNumber">----- SET {{j + 1}} -----</h6>
+            <label for="reps">REPS</label>
+            <input formControlName="reps" type="text">
+            <label for="weight">WEIGHT</label>
+            <input formControlName="weight" type="text">
+          </div>
+          <div class="add-exercise-form__add-set">
+            <div class="add-exercise">
+              <button type="button" (click)="onAddSet(exercise)" mat-flat-button><i class="fas fa-plus"></i></button>
+              <h6>ADD SET</h6>
+            </div>
+            <div class="delete-exercise">
+              <button type="button" (click)="onDeleteSet(exercise)" mat-flat-button><i
+                  class="fas fa-minus"></i></button>
+              <h6>DELETE SET</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="save-routine-button-group">
+      <button class="save-routine-button-group__save-button" mat-flat-button type="submit">SAVE</button>
+      <button mat-flat-button color="warn" routerLink="/workout-history" type="button">CANCEL</button>
+    </div>
+
+  </form>
+</div>
+<ng-template #notShow>
+  <div class="no-routine">
+    <p>
+      You must add a routine before logging a workout!
+    </p>
+    <h5 class="add-routine-link"><a routerLink="/create-routine">Add Routine</a></h5>
+  </div>
+</ng-template>

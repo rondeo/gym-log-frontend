@@ -1,0 +1,134 @@
+.main {
+  margin: 7rem 0 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.main input[type=text] {
+  border: none;
+  border-bottom: 2px solid black;
+  background: rgb(255, 255, 255, .4);
+}
+
+h3 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.add-exercise-form, .add-exercises-form, .addIcon {
+  width: 80vw;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-exercise-form label, .add-exercises-form label {
+  margin: 0;
+}
+
+.add-exercise-form__button-group {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-exercise-form__button-group button, a {
+  margin: .2rem .4rem;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.add-exercise-form__add-exercise {
+  padding: 0 0 1rem 0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: none;
+}
+
+.add-exercise, .delete-exercise {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+  text-align: center;
+}
+
+.add-exercise-form__add-exercise button {
+  background: black;
+  color: white;
+  border-radius: 50px;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.add-exercise h6, .delete-exercise h6 {
+  color: black;
+  font-size: .7rem;
+  margin-top: .3rem;
+}
+
+.routineExercise {
+  margin: .25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-workouts-container h6 {
+  margin: 1rem 0 .5rem 1rem;
+  font-size: .8rem;
+}
+
+.addIcon {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.addIcon h1 {
+  text-align: center;
+}
+
+.icons-container {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container-image {
+  width: 100vh;
+}
+
+.icon-container-image {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container-image img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 7px 7px 7px 7px;
+  margin: .3rem;
+}

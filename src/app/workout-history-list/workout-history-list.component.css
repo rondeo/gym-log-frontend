@@ -1,0 +1,246 @@
+.main {
+  box-sizing: border-box;
+  margin: 4rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  text-transform: uppercase;
+  margin: 1rem auto;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+}
+
+.workouts-container {
+  color: white;
+  border-radius: 25px 25px 0px 0px;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-workout-container {
+  width: 90vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-workout-info-left {
+  width: 60%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.last-workout-info-right {
+  width: 40%;
+  height:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-workout-image {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.recent-workouts-header {
+  width: 100vw;
+  background: black;
+  text-align: center;
+}
+
+.recent-workouts {
+  color: white;
+  background: black;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: scroll;
+}
+
+.recent-workouts h6 {
+  margin: .5rem 0;
+  text-align: center;
+}
+
+.recent-workouts-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90vh;
+}
+
+.recent-workouts-image_container {
+  height: 8rem;
+  text-align: center;
+  margin: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-workouts-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  height: 100%;
+  width: 100%;
+}
+
+div.recent-workouts-image:hover,
+div.last-workout-image:hover {
+  cursor: pointer;
+}
+
+.button-container {
+  width: 100vw;
+  padding: 2rem 0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.add-workout, .add-routine {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.button-container button {
+  background: black;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-radius: 50px;
+}
+
+.add-workout h6, .add-routine h6 {
+  font-size: .7rem;
+  margin-top: .3rem;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  transform: translate3d(0, -100%, 0);
+  transition: transform 500ms;
+  transition: 500ms;
+  z-index: 5;
+}
+
+.modal,
+.modal-body {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0, -100%, 0);
+  transition: transform 500ms;
+  transition: 500ms;
+  overflow: scroll;
+}
+
+.modal {
+  top: 4rem;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+}
+
+.modal-body {
+  width: 80vw;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.backdrop.show,
+.modal.show,
+.modal-body.show {
+  transform: translate3d(0, 0, 0);
+}
+
+.show {
+  visibility: visible;
+}
+
+.delete-workout {
+  width: 100%;
+}
+
+.card-img-top {
+  width: 60%;
+  margin: 1rem;
+}
+
+.workout-info,
+.workout-exercises {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exercise {
+  margin: 1rem;
+}
+
+.button-container {
+  z-index: 0;
+}

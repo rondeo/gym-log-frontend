@@ -1,0 +1,28 @@
+mat-card {
+    width: 100vw;
+    margin: 4rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-account {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 2rem;
+}
+
+div > button, div > a {
+    margin: 2rem;
+}

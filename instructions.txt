@@ -1,0 +1,2 @@
+add login / registration and auth.
+add filter exercises.

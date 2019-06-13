@@ -1,0 +1,27 @@
+app-nav-bar {
+  position: relative;
+  z-index: 5;
+}
+
+router-outlet {
+  position: relative;
+  z-index: 4;
+}
+
+.background-image {
+  background-image:url("../assets/background-1.jpg");
+  background-position: 0 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+
+}

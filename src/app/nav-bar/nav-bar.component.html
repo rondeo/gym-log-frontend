@@ -1,0 +1,26 @@
+<div class="nav-container">
+
+  <div [ngClass]="showClasses" class="menu-btn" (click)="toggleMenu()">
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+  </div>
+
+  <nav [ngClass]="showClasses" class="menu-dropdown-container" (click)="toggleMenu()">
+
+    <div [ngClass]="showClasses" class="menu-branding" (click)="toggleMenu()">
+      <div [ngClass]="showClasses" class="user-name" (click)="toggleMenu()">USER NAME</div>
+      <div [ngClass]="showClasses" class="portrait" (click)="toggleMenu()"></div>
+      <div [ngClass]="showClasses" class="log-out"><a (click)="onLogout()">Logout</a></div>
+    </div>
+
+    <ul class="nav-menu" (click)="toggleMenu()">
+      <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/workout-history" (click)="toggleMenu()">Home</a></li>
+      <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/routines" (click)="toggleMenu()">Routines</a></li>
+      <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/create-routine" (click)="toggleMenu()">Add Routine</a></li>
+      <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/log-workout" (click)="toggleMenu()">Log Workout</a></li>
+    </ul>
+
+  </nav>
+
+</div>

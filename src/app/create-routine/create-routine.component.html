@@ -1,0 +1,56 @@
+<div class="main">
+  <form [formGroup]="createRoutineForm" (ngSubmit)="onSubmit()">
+    <h3 *ngIf="addName">New Routine</h3>
+    <h3 *ngIf="addExercise">Add Exercises</h3>
+
+    <div class="add-exercise-form" *ngIf="addName">
+      <label for="routineTitle">NAME</label>
+      <input formControlName="routineTitle" type="text" required>
+      <div class="add-exercise-form__button-group">
+        <button type="button" (click)="onAddExercise()" mat-raised-button>NEXT</button>
+        <button type="button" routerLink="/workout-history" color="warn" mat-raised-button>CANCEL</button>
+      </div>
+    </div>
+
+    <div class="add-exercises-form" *ngIf="addExercise">
+      <div class="add-exercise-form__add-exercise">
+        <div class="add-exercise">
+          <button type="button" (click)="onAddExcercise()" mat-flat-button><i class="fas fa-plus"></i></button>
+          <h6>ADD EXERCISE</h6>
+        </div>
+        <div class="delete-exercise">
+          <button type="button" mat-flat-button><i class="fas fa-minus"></i></button>
+          <h6>DELETE EXERCISE</h6>
+        </div>
+      </div>
+      <div class="routineExercises" formArrayName="routineExercises">
+        <div class="routineExercise"
+             *ngFor="let exerciseControl of createRoutineForm.get('routineExercises').controls; let i = index"
+             [formGroupName]="i">
+          <label for="exerciseName">EXERCISE NAME</label>
+          <input formControlName="exerciseName" type="text">
+        </div>
+      </div>
+      <div class="add-exercise-form__button-group">
+        <button type="button" mat-raised-button (click)="onAddIcon()">NEXT</button>
+        <button type="button" color="warn" (click)="onAddName()" mat-raised-button>BACK</button>
+      </div>
+    </div>
+
+    <div class="addIcon" *ngIf="addIcon">
+      <div>
+        <h3>ASSIGN AN ICON TO THIS ROUTINE</h3>
+      </div>
+      <div class="icons-container">
+        <div class="icon-container-image" *ngFor="let url of buttonUrls; let i = index">
+          <img type="button" (click)="selectIcon(i)" src="{{url}}" alt="">
+        </div>
+      </div>
+      <div>
+        <button type="submit" mat-raised-button>SAVE</button>
+        <button type="button" color="warn" (click)="onAddExercise()" mat-raised-button>BACK</button>
+      </div>
+    </div>
+
+  </form>
+</div>

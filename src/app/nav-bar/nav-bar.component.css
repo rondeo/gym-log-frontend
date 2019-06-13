@@ -1,0 +1,105 @@
+.nav-container {
+  width:100vh;
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: black;
+}
+
+.menu-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  cursor: pointer;
+}
+
+.btn-line {
+  width: 28px;
+  height: 3px;
+  margin: 0 0 5px 0;
+  background: rgb(193,193,193);
+  transition: background 1500ms;
+}
+
+div.show div.btn-line {
+  background: black;
+}
+
+.menu-dropdown-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0.95;
+  visibility: hidden;
+  transition: visibility 550ms;
+}
+
+.show {
+  visibility: visible;
+}
+
+.nav-menu, .menu-branding  {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, .8);
+  list-style: none;
+  transition: transform 500ms;
+}
+
+.nav-menu {
+  right: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+.menu-branding {
+  left: 0;
+  transform: translate3d(0, 100%, 0);
+}
+
+nav.show div.menu-branding,
+nav.show ul.nav-menu {
+  transform: translate3d(0, 0, 0);
+}
+
+.portrait {
+  height: 100px;
+  width: 100px;
+  background: url('../../assets/ayodlo.jpg');
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
+  border: solid 3px black;
+}
+
+.nav-menu-item a,
+.log-out,
+.user-name,
+.portrait {
+  text-transform: uppercase;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  transition: 300ms;
+  margin: .4rem 0;
+}
+
+.nav-menu-item a:hover,
+.log-out:hover,
+.user-name:hover,
+.portrait:hover {
+  color: rgb(244,67,54);
+  border-color:rgb(244,67,54);
+  text-decoration: none;
+}

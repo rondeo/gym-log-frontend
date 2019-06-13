@@ -1,0 +1,150 @@
+.main {
+  margin: 6rem 0 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.log-routine-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: white;
+}
+
+.log-routine-form mat-form-field, .set {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3.title {
+  margin: .5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.select-routine-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  margin: 1.5rem 0;
+}
+
+.routine-form-fields {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.routine-exercise {
+  margin: .5rem;
+}
+
+.save-routine-button-group {
+  margin: 3rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-routine-button-group button {
+  margin: 0 .2rem;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.save-routine-button-group__save-button {
+  color: white;
+  background: black;
+}
+
+.set-list-item {
+  width: 80vw;
+  margin: .5rem auto;
+  background: white;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3.exercise-name {
+  text-transform: uppercase;
+}
+
+.setNumber {
+  color: red;
+}
+
+.add-exercise-form__add-set {
+  margin: .5rem;
+  padding: 0 0 1rem 0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: none;
+}
+
+.add-exercise, .delete-exercise {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.add-exercise-form__add-set button {
+  background: black;
+  color: white;
+  border-radius: 50px;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.add-exercise h6, .delete-exercise h6 {
+  color: black;
+  font-size: .7rem;
+  margin-top: .3rem;
+}
+
+.no-routine {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.add-routine-link {
+  background: black;
+  text-decoration: none;
+  padding: .5rem;
+}
+
+.add-routine-link a {
+  color: white;
+}
+
+.add-routine-link:hover {
+  cursor: pointer;
+}

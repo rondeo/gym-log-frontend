@@ -1,0 +1,18 @@
+<div class="main">
+  <h3 class="routines-header">Routines</h3>
+  <div class="add-routine-container">
+    <button mat-flat-button routerLink="/create-routine">ADD ROUTINE</button>
+  </div>
+  <mat-list class="routine-list" role="list" *ngFor="let routine of routines" (routineAdded)="onRoutineAdded($event)">
+    <div class="routine-list-item">
+      <mat-list-item class="routine-list-item__routine-name" role="listitem" (click)="open">{{ routine.name }}
+      </mat-list-item>
+      <div class="routine-list-item-button-group">
+        <button class="routine-list-item-button-group__edit-button" mat-flat-button (click)="onDelete(routine._id)">
+          EDIT
+        </button>
+        <button mat-flat-button color="warn" (click)="onDelete(routine._id)">DELETE</button>
+      </div>
+    </div>
+  </mat-list>
+</div>

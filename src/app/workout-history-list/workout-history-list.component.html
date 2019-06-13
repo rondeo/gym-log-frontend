@@ -1,0 +1,76 @@
+<div class="main">
+
+  <div class="backdrop" [ngClass]="showClasses" (click)="closeModal()"></div>
+  <div class="modal" [ngClass]="showClasses" (click)="closeModal()">
+    <div class="modal-body" [ngClass]="showClasses">
+      <button type="button" class="delete-workout btn btn-danger" (click)="onDeleteWorkout()">DELETE WORKOUT</button>
+      <img class="card-img-top" src={{currentWorkout.icon}} alt="Card image cap">
+      <h4 class="workout-info">{{currentWorkout.name}}<br>{{currentWorkout.date}}</h4>
+      <div *ngIf="currentWorkout.exercises" class="workout-exercises">
+          <div class ="exercise" *ngFor="let exercise of currentWorkout.exercises">
+            <div class="exercise-name">{{exercise.name}}</div>
+            <ul *ngFor="let set of exercise.weight; let i = index">
+              <li class="exercise-sets">Set {{i + 1}}</li>
+              <li class="exercise-reps">Reps {{set.reps}}</li>
+              <li class="exercise-weight">Weight {{set.weight}}</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="title-container">
+    <h4 class="title">Workout<br>History</h4>
+  </div>
+
+  <div class="workouts-container" *ngIf="lastWorkout">
+
+    <div class="last-workout-container">
+      <div class="last-workout-info-left">
+        <h6>Last Workout</h6>
+        <h4>{{lastWorkout.date}}</h4>
+        <h6>{{lastWorkout.name}}</h6>
+      </div>
+      <div class="last-workout-info-right">
+        <div 
+          class="last-workout-image"
+          alt="IMG" (click)="openModal(i)"
+          [style.background-image]="'url(' + lastWorkout.icon + ')'">
+        </div>
+      </div>
+    </div>
+
+    <div class="recent-workouts-header">
+      <h6>Recent Workouts</h6>
+    </div>
+
+    <div class="recent-workouts">
+      <div class="recent-workouts-images">
+        <div class="recent-workouts-image_container" *ngFor="let routine of savedRoutines; let i = index">
+          <div>{{routine.name}}</div>
+          <div 
+            *ngIf="i<4" 
+            class="recent-workouts-image" 
+            alt="IMG" (click)="openModal(i)"
+            [style.background-image]="'url(' + routine.icon + ')'">
+          </div>
+          <div>{{routine.date}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <div class="add-workout">
+        <button type="button" mat-flat-button routerLink="/log-workout" class="w3-circle"><i
+            class="fas fa-plus"></i></button>
+        <h6>Log Workout</h6>
+      </div>
+      <div class="add-routine">
+        <button mat-flat-button routerLink="/create-routine"><i class="fas fa-plus"></i></button>
+        <h6>Add Routine</h6>
+      </div>
+    </div>
+
+  </div>
+
+</div>
