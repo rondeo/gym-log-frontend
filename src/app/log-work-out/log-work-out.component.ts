@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-work-out.component.css']
 })
 
-export class LogWorkOutComponent implements OnInit, OnDestroy {
+export class LogWorkOutComponent implements OnInit {
   logRoutineForm: FormGroup;
   private routinesSub: Subscription;
   currentRoutine: Routine;
@@ -100,9 +100,5 @@ export class LogWorkOutComponent implements OnInit, OnDestroy {
       await this.logRoutineService.saveRoutine(this.currentRoutine.name, exercises, this.currentRoutine.icon);
     });
     this.router.navigate(['/workout-history']);
-  }
-
-  ngOnDestroy() {
-    this.routinesSub.unsubscribe();
   }
 }
