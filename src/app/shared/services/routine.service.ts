@@ -13,7 +13,7 @@ export class RoutineService implements OnDestroy {
   constructor( private http: HttpClient) {}
 
   getRoutines() {
-    this.http.get<{message: string, routines: Routine[]}>('http://localhost:8080/api/routines')
+    this.http.get<{message: string, routines: Routine[]}>('api/routines')
       .subscribe((routineData) => {
         this.routines = routineData.routines;
         this.routinesUpdated.next([...this.routines]);
@@ -27,7 +27,7 @@ export class RoutineService implements OnDestroy {
   addRoutine(name: string, exercises: [], icon: string) {
     const routine = new Routine(name, exercises, icon);
     console.log(exercises);
-    this.http.post<{message: string}>('http://localhost:8080/api/routines', routine)
+    this.http.post<{message: string}>('api/routines', routine)
       .subscribe(responseData => {
         this.routines.push(routine);
         this.routinesUpdated.next([...this.routines]);
@@ -35,7 +35,7 @@ export class RoutineService implements OnDestroy {
   }
 
   deleteRoutine(routineId: string) {
-    this.http.delete('http://localhost:8080/api/routines/' + routineId)
+    this.http.delete('api/routines/' + routineId)
       .subscribe(() => {
         const updatedRoutines = this.routines.filter(routine => routine._id !== routineId);
         this.routines = updatedRoutines;

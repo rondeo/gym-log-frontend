@@ -28,7 +28,7 @@ export class AuthService implements OnDestroy {
 
   createUser(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
-    this.http.post('http://localhost:8080/api/signup', authData)
+    this.http.post('api/signup', authData)
       .subscribe(response => {
         console.log(response);
       });
@@ -36,7 +36,7 @@ export class AuthService implements OnDestroy {
 
   login(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
-    this.http.post<{ token: string, expiresIn: number, message: string }>('http://localhost:8080/api/signin', authData)
+    this.http.post<{ token: string, expiresIn: number, message: string }>('api/signin', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
