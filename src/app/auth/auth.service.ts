@@ -75,7 +75,6 @@ export class AuthService implements OnDestroy {
   }
 
   async logout() {
-    console.log("logging out!");
     this.token = await null;
     this.isAuthenticated = await false;
     this.authStatusListener.next(false);
