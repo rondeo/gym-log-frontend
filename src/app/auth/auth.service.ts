@@ -1,11 +1,11 @@
 import {HttpClient} from '@angular/common/http';
 import {AuthData} from './auth-data.model';
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
-export class AuthService implements OnDestroy {
+export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false;

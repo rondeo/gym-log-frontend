@@ -2,10 +2,10 @@ import {SavedRoutine} from '../models/saved-routine.model';
 import {Exercise} from '../models/exercise.model';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class LogRoutineService implements OnDestroy {
+export class LogRoutineService {
 
   constructor(private http: HttpClient) {
   }

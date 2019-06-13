@@ -1,11 +1,11 @@
 import { Routine } from '../models/routine.model';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 // @ts-ignore
 @Injectable({providedIn: 'root'})
-export class RoutineService implements OnDestroy {
+export class RoutineService {
   private routines: Routine[] = [];
   private routinesUpdated = new Subject<Routine[]>();
   private routine: Routine;
