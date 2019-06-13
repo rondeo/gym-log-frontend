@@ -109,10 +109,5 @@ export class AuthService implements OnDestroy {
       expirationDate: new Date(expirationDate)
     };
   }
-
-  ngOnDestroy(): void {
-    this.authStatusListener.unsubscribe();
-  }
-
 }
 

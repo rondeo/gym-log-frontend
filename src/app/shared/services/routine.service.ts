@@ -42,9 +42,4 @@ export class RoutineService implements OnDestroy {
         this.routinesUpdated.next([...this.routines]);
       });
   }
-
-  ngOnDestroy(): void {
-    this.routinesUpdated.unsubscribe();
-  }
-
 }

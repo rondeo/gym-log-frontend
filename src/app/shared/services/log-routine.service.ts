@@ -45,9 +45,4 @@ export class LogRoutineService implements OnDestroy {
       //this.savedRoutinesUpdated.next([...this.savedRoutines]);
     });
   }
-
-  ngOnDestroy(): void {
-    this.savedRoutinesUpdated.unsubscribe();
-  }
-
 }
