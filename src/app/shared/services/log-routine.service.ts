@@ -15,7 +15,7 @@ export class LogRoutineService implements OnDestroy {
   private savedRoutinesUpdated = new Subject<SavedRoutine[]>();
 
   getWorkouts() {
-    this.http.get<{ message: string, workouts: SavedRoutine[] }>('api/workouts')
+    this.http.get<{ message: string, workouts: SavedRoutine[] }>('http://localhost:8080/api/workouts')
       .subscribe((workoutData) => {
         this.savedRoutines = workoutData.workouts;
         this.savedRoutinesUpdated.next([...this.savedRoutines]);
@@ -29,7 +29,7 @@ export class LogRoutineService implements OnDestroy {
   async saveRoutine(name: string, exercises: any[], icon: string) {
     const routine = await new SavedRoutine(name, exercises, icon);
     console.log(exercises[0]);
-    this.http.post<{ message: string }>('api/workouts', routine)
+    this.http.post<{ message: string }>('http://localhost:8080/api/workouts', routine)
       .subscribe(responseData => {
         //console.log(responseData.message);
         this.savedRoutines.push(routine);
@@ -38,7 +38,7 @@ export class LogRoutineService implements OnDestroy {
   }
 
   deleteRoutine(workout: any) {
-    this.http.delete<{message: string}>('api/workouts/' + workout._id)
+    this.http.delete<{message: string}>('http://localhost:8080/api/workouts/' + workout._id)
     .subscribe(responseData => {
       //console.log(responseData.message);
       //this.savedRoutines.push(routine);

@@ -15,8 +15,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  onLogout() {
-    this.authService.logout();
+  async onLogout() {
+    await this.authService.logout();
+    await this.toggleMenu();
+    this.router.navigate(['/signin']);
   }
 
   toggleMenu() {
