@@ -1,26 +1,27 @@
 <div class="main">
 
-  <div class="backdrop" [ngClass]="showClasses" (click)="closeModal()"></div>
-  <div class="modal" [ngClass]="showClasses" (click)="closeModal()">
+  <div class="title-container">
+    <h4 class="title">Workout<br>History</h4>
+  </div>
+
+  <div class="backdrop" [ngClass]="showClasses" (click)="closeModal()" *ngIf="currentWorkout; else noLoggedWorkouts">
+  </div>
+  <div class="modal" [ngClass]="showClasses" (click)="closeModal()" *ngIf="currentWorkout">
     <div class="modal-body" [ngClass]="showClasses">
       <button type="button" class="delete-workout btn btn-danger" (click)="onDeleteWorkout()">DELETE WORKOUT</button>
       <img class="card-img-top" src={{currentWorkout.icon}} alt="Card image cap">
       <h4 class="workout-info">{{currentWorkout.name}}<br>{{currentWorkout.date}}</h4>
       <div *ngIf="currentWorkout.exercises" class="workout-exercises">
-          <div class ="exercise" *ngFor="let exercise of currentWorkout.exercises">
-            <div class="exercise-name">{{exercise.name}}</div>
-            <ul *ngFor="let set of exercise.weight; let i = index">
-              <li class="exercise-sets">Set {{i + 1}}</li>
-              <li class="exercise-reps">Reps {{set.reps}}</li>
-              <li class="exercise-weight">Weight {{set.weight}}</li>
-            </ul>
-          </div>
+        <div class="exercise" *ngFor="let exercise of currentWorkout.exercises">
+          <div class="exercise-name">{{exercise.name}}</div>
+          <ul *ngFor="let set of exercise.weight; let i = index">
+            <li class="exercise-sets">Set {{i + 1}}</li>
+            <li class="exercise-reps">Reps {{set.reps}}</li>
+            <li class="exercise-weight">Weight {{set.weight}}</li>
+          </ul>
         </div>
+      </div>
     </div>
-  </div>
-
-  <div class="title-container">
-    <h4 class="title">Workout<br>History</h4>
   </div>
 
   <div class="workouts-container" *ngIf="lastWorkout">
@@ -32,9 +33,7 @@
         <h6>{{lastWorkout.name}}</h6>
       </div>
       <div class="last-workout-info-right">
-        <div 
-          class="last-workout-image"
-          alt="IMG" (click)="openModal(i)"
+        <div class="last-workout-image" alt="IMG" (click)="openModal(i)"
           [style.background-image]="'url(' + lastWorkout.icon + ')'">
         </div>
       </div>
@@ -44,14 +43,11 @@
       <h6>Recent Workouts</h6>
     </div>
 
-    <div class="recent-workouts">
+    <div class="recent-workouts" *ngIf="currentWorkout; else noLoggedWorkouts">
       <div class="recent-workouts-images">
         <div class="recent-workouts-image_container" *ngFor="let routine of savedRoutines; let i = index">
           <div>{{routine.name}}</div>
-          <div 
-            *ngIf="i<4" 
-            class="recent-workouts-image" 
-            alt="IMG" (click)="openModal(i)"
+          <div *ngIf="i<4" class="recent-workouts-image" alt="IMG" (click)="openModal(i)"
             [style.background-image]="'url(' + routine.icon + ')'">
           </div>
           <div>{{routine.date}}</div>
@@ -72,5 +68,15 @@
     </div>
 
   </div>
+
+  <ng-template #noLoggedWorkouts>
+    <div class="no-workout">
+      <p>
+        You haven't logged any workouts yet!
+      </p>
+      <p>Start by creating and routine and logging your first workout!</p>
+      <h5 class="add-workout-link"><a routerLink="/log-workout">Log Workout</a></h5>
+    </div>
+  </ng-template>
 
 </div>

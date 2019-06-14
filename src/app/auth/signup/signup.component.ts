@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {AuthService} from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,16 +10,17 @@ import {AuthService} from '../auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor( public authService: AuthService) { }
+  constructor( public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSignUp(form: NgForm) {
+  async onSignUp(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.authService.createUser(form.value.email, form.value.password);
+    await this.authService.createUser(form.value.email, form.value.password);
+    this.router.navigate(['/signin']);
   }
 
 }
