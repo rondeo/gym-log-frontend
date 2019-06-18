@@ -38,9 +38,9 @@ export class AuthService {
     const authData: AuthData = {email: email, password: password};
     this.http.post<{ token: string, expiresIn: number, message: string }>('api/signin', authData)
       .subscribe(response => {
+        console.log(response);
         const token = response.token;
         this.token = token;
-        console.log(response.message);
         if (token) {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
