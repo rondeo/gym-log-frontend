@@ -30,7 +30,6 @@ export class AuthService {
     const authData: AuthData = {email: email, password: password};
     this.http.post('api/signup', authData)
       .subscribe(response => {
-        console.log(response);
       });
   }
 
@@ -38,7 +37,6 @@ export class AuthService {
     const authData: AuthData = {email: email, password: password};
     this.http.post<{ token: string, expiresIn: number, message: string }>('api/signin', authData)
       .subscribe(response => {
-        console.log(response);
         const token = response.token;
         this.token = token;
         if (token) {
@@ -51,9 +49,7 @@ export class AuthService {
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-          console.log(expirationDate);
           this.saveAuthData(token, expirationDate);
-          console.log(token);
           this.router.navigate(['/']);
         }
       });
