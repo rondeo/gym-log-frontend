@@ -11,13 +11,13 @@
       <button type="button" class="delete-workout btn btn-danger" (click)="onDeleteWorkout()">DELETE WORKOUT</button>
       <img class="card-img-top" src={{currentWorkout.icon}} alt="Card image cap">
       <h4 class="workout-info">{{currentWorkout.name}}<br>{{currentWorkout.date}}</h4>
-      <div *ngIf="currentWorkout.exercises" class="workout-exercises">
+      <div class="workout-exercises" *ngIf="currentWorkout.exercises">
         <div class="exercise" *ngFor="let exercise of currentWorkout.exercises">
-          <div class="exercise-name">{{exercise.name}}</div>
-          <ul *ngFor="let set of exercise.weight; let i = index">
+          <div class="exercise-name">---{{exercise.name}}---</div>
+          <ul class= "modal-sets" *ngFor="let set of exercise.weight; let i = index">
             <li class="exercise-sets">Set {{i + 1}}</li>
-            <li class="exercise-reps">Reps {{set.reps}}</li>
-            <li class="exercise-weight">Weight {{set.weight}}</li>
+            <li class="exercise-reps">Reps: {{exercise.reps[i]}}</li>
+            <li class="exercise-weight">Weight: {{exercise.weight[i]}}</li>
           </ul>
         </div>
       </div>

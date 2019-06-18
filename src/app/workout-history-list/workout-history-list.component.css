@@ -174,33 +174,31 @@ div.last-workout-image:hover {
 .modal,
 .modal-body {
   visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   transform: translate3d(0, -100%, 0);
   transition: transform 500ms;
   transition: 500ms;
-  overflow: scroll;
 }
 
 .modal {
-  top: 4rem;
-  left: 0;
+  box-sizing: border-box;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
+
 }
 
 .modal-body {
+  padding: 3rem 0;
   width: 80vw;
   z-index: 5;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow: auto;
 }
 
 .backdrop.show,
@@ -238,7 +236,15 @@ ul li {
 }
 
 .exercise {
-  margin: 1rem;
+  margin: 1.5rem;
+}
+
+.exercise-name {
+  text-transform: capitalize;
+}
+
+.modal-sets {
+  margin: .4rem;
 }
 
 .button-container {
