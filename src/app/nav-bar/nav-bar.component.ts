@@ -11,8 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   avatar: String;
-  avatarUrl = String;
-  //avatarUrlDev = String;
   selectedFile: File = null;
   showClasses = {show: false};
   userIsAuthenticated = false;
@@ -45,20 +43,18 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.selectedFile = await <File>event.target.files[0];
     const fd = new FormData();
     fd.append('myAvatar', this.selectedFile);
-    this.http.post('http://localhost:8080/api/avatar', fd)
+    this.http.post('/api/avatar', fd)
     .subscribe( res => {
       console.log('Avatar uploaded succesfully!');
     });
   }
 
   async getAvatar() {
-    await this.http.get<{ message: String, avatar: String }>('http://localhost:8080/api/avatar')
+    await this.http.get<{ message: String, avatar: String }>('/api/avatar')
     .subscribe( async res => {
       console.log(res);
       this.avatar = await res.avatar;
       console.log(this.avatar);
-      //this.avatarUrlDev = await `../../../../node-app/${this.avatar}`;
-      this.avatarUrl = `../${this.avatar}`;
     });
   }
 
