@@ -75,6 +75,7 @@ export class AuthService {
     this.isAuthenticated = await false;
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
+    this.router.navigate(['/signin']);
   }
 
   private setAuthTimer(duration: number) {

@@ -28,7 +28,6 @@ export class WorkoutHistoryListComponent implements OnInit {
         this.savedRoutines = this.savedRoutines.reverse();
         this.lastWorkout = savedWorkouts[0];
         this.currentWorkout =  savedWorkouts[0];
-        console.log(savedWorkouts);
       });
   }
 
@@ -43,7 +42,6 @@ export class WorkoutHistoryListComponent implements OnInit {
 
   closeModal() {
     this.showClasses.show === true ? this.showClasses.show = false : this.showClasses.show = true;
-    console.log(this.currentWorkout);
   }
 
   onDeleteWorkout() {

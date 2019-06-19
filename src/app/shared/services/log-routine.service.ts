@@ -31,7 +31,6 @@ export class LogRoutineService {
     console.log(exercises[0]);
     this.http.post<{ message: string }>('api/workouts', routine)
       .subscribe(responseData => {
-        //console.log(responseData.message);
         this.savedRoutines.push(routine);
         this.savedRoutinesUpdated.next([...this.savedRoutines]);
       });
@@ -40,9 +39,6 @@ export class LogRoutineService {
   deleteRoutine(workout: any) {
     this.http.delete<{message: string}>('api/workouts/' + workout._id)
     .subscribe(responseData => {
-      //console.log(responseData.message);
-      //this.savedRoutines.push(routine);
-      //this.savedRoutinesUpdated.next([...this.savedRoutines]);
     });
   }
 }

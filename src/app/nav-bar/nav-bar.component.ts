@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {Subscription} from "rxjs";
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,11 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit, OnDestroy {
+  avatar: String;
+  avatarUrl = String;
+  //avatarUrlDev = String;
+  selectedFile: File = null;
   showClasses = {show: false};
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
   async onLogout() {
     await this.authService.logout();
@@ -25,7 +30,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.showClasses.show === false ? this.showClasses.show = true : this.showClasses.show = false;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getAvatar();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -33,6 +39,27 @@ export class NavBarComponent implements OnInit, OnDestroy {
     if (!this.userIsAuthenticated) {
       this.router.navigate(['/signin']);
     }
+  }
+
+  async onFileSelected(event: any) {
+    this.selectedFile = await <File>event.target.files[0];
+    const fd = new FormData();
+    fd.append('myAvatar', this.selectedFile);
+    this.http.post('http://localhost:8080/api/avatar', fd)
+    .subscribe( res => {
+      console.log('Avatar uploaded succesfully!');
+    });
+  }
+
+  async getAvatar() {
+    await this.http.get<{ message: String, avatar: String }>('http://localhost:8080/api/avatar')
+    .subscribe( async res => {
+      console.log(res);
+      this.avatar = await res.avatar;
+      console.log(this.avatar);
+      //this.avatarUrlDev = await `../../../../node-app/${this.avatar}`;
+      this.avatarUrl = `../${this.avatar}`;
+    });
   }
 
   ngOnDestroy() {

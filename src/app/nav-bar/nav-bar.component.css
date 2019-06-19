@@ -83,6 +83,10 @@ nav.show ul.nav-menu {
   border: solid 3px black;
 }
 
+input[type="file"] {
+  display: none;
+}
+
 .nav-menu-item a,
 .log-out,
 .user-name,
