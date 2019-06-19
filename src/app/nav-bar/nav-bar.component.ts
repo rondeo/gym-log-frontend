@@ -20,9 +20,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
   async onLogout() {
-    await this.authService.logout();
-    await this.toggleMenu();
-    await this.getUser();
+    this.authService.logout();
+    this.toggleMenu();
+    this.getUser();
     this.router.navigate(['/signin']);
   }
 
@@ -31,7 +31,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getUser();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -39,6 +38,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     if (!this.userIsAuthenticated) {
       this.router.navigate(['/signin']);
     }
+    this.getUser();
   }
 
   onFileSelected(event: any) {
