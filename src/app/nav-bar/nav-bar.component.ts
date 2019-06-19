@@ -34,11 +34,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
+      this.getUser();
     });
     if (!this.userIsAuthenticated) {
       this.router.navigate(['/signin']);
     }
-    this.getUser();
   }
 
   onFileSelected(event: any) {
