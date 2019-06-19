@@ -18,9 +18,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
-  async onLogout() {
-    await this.authService.logout();
-    await this.toggleMenu();
+  onLogout() {
+    this.authService.logout();
+    this.toggleMenu();
     this.router.navigate(['/signin']);
   }
 
@@ -28,8 +28,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.showClasses.show === false ? this.showClasses.show = true : this.showClasses.show = false;
   }
 
-  async ngOnInit() {
-    await this.getAvatar();
+  ngOnInit() {
+    this.getAvatar();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -39,21 +39,21 @@ export class NavBarComponent implements OnInit, OnDestroy {
     }
   }
 
-  async onFileSelected(event: any) {
-    this.selectedFile = await <File>event.target.files[0];
+  onFileSelected(event: any) {
+    this.selectedFile = <File>event.target.files[0];
     const fd = new FormData();
     fd.append('myAvatar', this.selectedFile);
     this.http.post('/api/avatar', fd)
     .subscribe( res => {
-      console.log('Avatar uploaded succesfully!');
+      this.getAvatar();
     });
   }
 
-  async getAvatar() {
-    await this.http.get<{ message: String, avatar: String }>('/api/avatar')
+  getAvatar() {
+    this.http.get<{ message: String, avatar: String }>('/api/avatar')
     .subscribe( async res => {
-      console.log(res);
-      this.avatar = await res.avatar;
+      this.avatar = res.avatar;
+      this.avatar = this.avatar.split('\\')[1];
       console.log(this.avatar);
     });
   }

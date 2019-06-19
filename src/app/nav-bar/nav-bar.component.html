@@ -10,8 +10,8 @@
 
     <div [ngClass]="showClasses" class="menu-branding" (click)="toggleMenu()">
       <div [ngClass]="showClasses" class="user-name" (click)="toggleMenu()">USER NAME</div>
-      <label [ngClass]="showClasses" *ngIf="avatar" class="portrait" [style.background]="'url(' + avatar + ')'">
-          <input [ngClass]="showClasses" *ngIf="avatar" class="portrait" [style.background]="'url(' + avatar + ')'" type="file" (change)="onFileSelected($event)">
+      <label [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(/uploads/' + avatar + ')'" class="portrait">
+          <input [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(/uploads/' + avatar + ')'" type="file" (change)="onFileSelected($event)" class="portrait">
       </label>
       <div [ngClass]="showClasses" class="log-out" (click)="onLogout()">Logout</div>
     </div>

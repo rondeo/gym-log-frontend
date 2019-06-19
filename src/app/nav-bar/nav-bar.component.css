@@ -76,9 +76,9 @@ nav.show ul.nav-menu {
 .portrait {
   height: 100px;
   width: 100px;
-  background: url('../../assets/ayodlo.jpg');
-  background-position: center center;
-  background-size: cover;
+  /*background: url('../../assets/ayodlo.jpg');*/
+  background-position: center center !important;
+  background-size: cover !important;
   border-radius: 50%;
   border: solid 3px black;
 }
