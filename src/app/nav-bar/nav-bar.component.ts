@@ -19,9 +19,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
-  onLogout() {
-    this.authService.logout();
-    this.toggleMenu();
+  async onLogout() {
+    await this.authService.logout();
+    await this.toggleMenu();
+    await this.getUser();
     this.router.navigate(['/signin']);
   }
 
@@ -56,6 +57,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.avatar = res.avatar;
       this.avatar = this.avatar.split('\\')[1];
       this.userName = res.userName;
+      console.log(this.userName);
+      console.log(this.avatar);
     });
   }
 
