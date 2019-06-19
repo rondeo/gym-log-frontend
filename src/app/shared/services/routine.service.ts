@@ -14,11 +14,7 @@ export class RoutineService {
   constructor( private http: HttpClient, private router: Router) {}
 
   getRoutines() {
-<<<<<<< HEAD
     this.http.get<{message: string, routines: Routine[]}>('api/routine')
-=======
-    this.http.get<{ message: string, routines: Routine[] }>('http://localhost:8080/api/routine')
->>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       .subscribe((routineData) => {
         this.routines = routineData.routines;
         this.routinesUpdated.next([...this.routines]);
