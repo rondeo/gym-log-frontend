@@ -28,14 +28,14 @@ export class AuthService {
 
   createUser(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
-    this.http.post('api/signup', authData)
+    this.http.post('api/sign-up', authData)
       .subscribe(response => {
       });
   }
 
   login(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
-    this.http.post<{ token: string, expiresIn: number, message: string }>('api/signin', authData)
+    this.http.post<{ token: string, expiresIn: number, message: string }>('api/sign-in', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
