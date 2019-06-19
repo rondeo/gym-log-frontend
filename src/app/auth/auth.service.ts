@@ -26,16 +26,29 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
+<<<<<<< HEAD
   createUser(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
     this.http.post('api/sign-up', authData)
       .subscribe(response => {
+=======
+  createUser(email: string, userName: string, password: string) {
+    const authData: AuthData = {email: email, userName: userName, password: password};
+    this.http.post('http://localhost:8080/api/sign-up', authData)
+      .subscribe(response => {
+        this.router.navigate(['/signin']);
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       });
   }
 
   login(email: string, password: string) {
+<<<<<<< HEAD
     const authData: AuthData = {email: email, password: password};
     this.http.post<{ token: string, expiresIn: number, message: string }>('api/sign-in', authData)
+=======
+    const authData: AuthData = {email: email, userName: null, password: password};
+    this.http.post<{ token: string, expiresIn: number }>('http://localhost:8080/api/sign-in', authData)
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       .subscribe(response => {
         const token = response.token;
         this.token = token;

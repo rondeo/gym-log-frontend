@@ -84,7 +84,6 @@ export class CreateRoutineComponent implements OnInit {
   async onSubmit() {
     await this.routineService.addRoutine(this.createRoutineForm.value['routineTitle'],
     this.createRoutineForm.value['routineExercises'], this.selectedIcon);
-    this.router.navigate(['/routines']);
   }
 
 }

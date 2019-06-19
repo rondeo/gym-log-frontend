@@ -39,11 +39,16 @@ h3.routines-header {
 
 .routine-list-item {
   background: white;
-  padding: .5rem;
+  padding: 1.5rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.routine-list-item__routine-name {
+  text-align: center;
+  margin: 1rem;
 }
 
 .routine-list-item-button-group {

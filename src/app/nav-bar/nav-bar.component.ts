@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   avatar: String;
+  userName: String;
   selectedFile: File = null;
   showClasses = {show: false};
   userIsAuthenticated = false;
@@ -29,7 +30,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getAvatar();
+    this.getUser();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -43,18 +44,28 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.selectedFile = <File>event.target.files[0];
     const fd = new FormData();
     fd.append('myAvatar', this.selectedFile);
+<<<<<<< HEAD
     this.http.post('/api/avatar', fd)
+=======
+    this.http.post('http://localhost:8080/api/getUser', fd)
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
     .subscribe( res => {
-      this.getAvatar();
+      this.getUser();
     });
   }
 
+<<<<<<< HEAD
   getAvatar() {
     this.http.get<{ message: String, avatar: String }>('/api/avatar')
     .subscribe( async res => {
+=======
+ getUser() {
+   this.http.get<{ message: String, avatar: String, userName: String }>('http://localhost:8080/api/getUser')
+    .subscribe( res => {
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       this.avatar = res.avatar;
       this.avatar = this.avatar.split('\\')[1];
-      console.log(this.avatar);
+      this.userName = res.userName;
     });
   }
 

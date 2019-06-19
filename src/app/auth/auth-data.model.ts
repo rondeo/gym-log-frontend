@@ -1,4 +1,5 @@
 export interface AuthData {
-  email: string;
-  password: string;
+  email: String;
+  userName: String;
+  password: String;
 }

@@ -1,21 +1,25 @@
 <mat-card>
-    <form (submit)="onSignUp(signUpForm)" #signUpForm="ngForm" class="signup-form">
-        <h1 class="card-title">Create<br>Account</h1>
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h1 class="card-title">Sign Up</h1>
       <mat-form-field>
-        <input matInput type="email" placeholder="E-Mail" #emailInput="ngModel" required email name="email" ngModel>
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+        <input matInput type="email" placeholder="E-Mail" formControlName="email">
+        <span class="invalid-message" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Please enter a valid email!</span>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" ngModel #passwordInput="ngModel" required>
-        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+          <input matInput type="text" placeholder="User Name" formControlName="userName">
+          <span class="invalid-message" *ngIf="!signupForm.get('userName').valid && signupForm.get('userName').touched">Please enter a valid userName!</span>
       </mat-form-field>
       <mat-form-field>
-          <input matInput type="password" placeholder="Verify Password" name="verify-password" ngModel #passwordInput="ngModel" required>
-          <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-        </mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+        <span class="invalid-message" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">Please enter a valid password!</span>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="password" placeholder="Verify Password" formControlName="verifyPassword">
+          <span class="invalid-message" *ngIf="!signupForm.get('verifyPassword').valid && signupForm.get('verifyPassword').touched">Please verify your password!</span>
+      </mat-form-field>
       <div class="cancel">
           <button mat-raised-button color="accent" type="submit">Sign Up</button>
-          <a routerLink="/workout-history">Cancel</a>
+          <a routerLink="/signin">Cancel</a>
         </div>
     </form>
   </mat-card>

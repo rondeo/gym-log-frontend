@@ -1,14 +1,13 @@
 <mat-card>
-    <form (submit)="onSignIn(signInForm)" #signInForm="ngForm" class="signin-form">
-        <h1 class="card-title">Login</h1>
+    <form class="signin-form" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <h1 class="card-title">Login</h1>
       <mat-form-field>
-        <input matInput type="email" placeholder="E-Mail" #emailInput="ngModel" required email name="email" ngModel>
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+        <input matInput type="email" placeholder="E-Mail" formControlName="email">
+        <span class="invalid-message" *ngIf="!signinForm.get('email').valid && signinForm.get('email').touched">Please enter a valid email!</span>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" ngModel #passwordInput="ngModel" required>
-        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-      </mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+        <span class="invalid-message" *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched">Please enter a valid password!</span>      </mat-form-field>
       <div class="create-account">
           <button mat-raised-button color="accent" type="submit">Login</button>
           <a routerLink="/signup">Create Account</a>

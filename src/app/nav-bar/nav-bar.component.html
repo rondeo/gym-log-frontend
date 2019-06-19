@@ -1,17 +1,23 @@
 <div class="nav-container">
 
-  <div [ngClass]="showClasses" class="menu-btn" (click)="toggleMenu()">
+  <div class="menu-btn" [ngClass]="showClasses" *ngIf="userIsAuthenticated" (click)="toggleMenu()">
     <div class="btn-line"></div>
     <div class="btn-line"></div>
     <div class="btn-line"></div>
   </div>
 
-  <nav [ngClass]="showClasses" class="menu-dropdown-container" (click)="toggleMenu()">
+  <nav class="menu-dropdown-container" [ngClass]="showClasses" *ngIf="userIsAuthenticated" (click)="toggleMenu()">
 
     <div [ngClass]="showClasses" class="menu-branding" (click)="toggleMenu()">
+<<<<<<< HEAD
       <div [ngClass]="showClasses" class="user-name" (click)="toggleMenu()">USER NAME</div>
       <label [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(/uploads/' + avatar + ')'" class="portrait">
           <input [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(/uploads/' + avatar + ')'" type="file" (change)="onFileSelected($event)" class="portrait">
+=======
+      <div [ngClass]="showClasses" class="user-name" (click)="toggleMenu()">{{userName}}</div>
+      <label [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(http://localhost:8080/uploads/' + avatar + ')'" class="portrait">
+          <input [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(http://localhost:8080/uploads/' + avatar + ')'" type="file" (change)="onFileSelected($event)" class="portrait">
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       </label>
       <div [ngClass]="showClasses" class="log-out" (click)="onLogout()">Logout</div>
     </div>

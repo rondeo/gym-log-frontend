@@ -2,6 +2,7 @@ import { Routine } from '../models/routine.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 // @ts-ignore
 @Injectable({providedIn: 'root'})
@@ -10,10 +11,14 @@ export class RoutineService {
   private routinesUpdated = new Subject<Routine[]>();
   private routine: Routine;
 
-  constructor( private http: HttpClient) {}
+  constructor( private http: HttpClient, private router: Router) {}
 
   getRoutines() {
+<<<<<<< HEAD
     this.http.get<{message: string, routines: Routine[]}>('api/routine')
+=======
+    this.http.get<{ message: string, routines: Routine[] }>('http://localhost:8080/api/routine')
+>>>>>>> 513e077... Added form validation for signin and signup + fixed default picture for avatar
       .subscribe((routineData) => {
         this.routines = routineData.routines;
         this.routinesUpdated.next([...this.routines]);
@@ -31,6 +36,7 @@ export class RoutineService {
       .subscribe(responseData => {
         this.routines.push(routine);
         this.routinesUpdated.next([...this.routines]);
+        this.router.navigate(['/routines']);
       });
   }
 

@@ -26,3 +26,8 @@ mat-card {
 div > button, div > a {
     margin: 2rem;
 }
+
+.invalid-message {
+    font-size: .7rem;
+    color: lightslategray;
+}
