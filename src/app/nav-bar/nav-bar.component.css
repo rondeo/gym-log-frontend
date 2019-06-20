@@ -110,8 +110,7 @@ input[type="file"] {
 }
 
 .portrait:hover {
-  background: url("../../assets/upload-image.jpg"),
-    url("../../assets/ayodlo.jpg");
+  background: url("/uploads/upload-image.jpg");
   background-color: rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 1);
   background-position: center center, center center;
   background-size: cover, cover;
