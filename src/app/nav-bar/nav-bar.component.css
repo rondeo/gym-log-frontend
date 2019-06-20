@@ -107,9 +107,6 @@ input[type="file"] {
   color: rgb(244, 67, 54);
   border-color: rgb(244, 67, 54);
   text-decoration: none;
-<<<<<<< HEAD
-}
-=======
 }
 
 .portrait:hover {
@@ -186,4 +183,3 @@ input[type="file"] {
     text-decoration: none;
   }
 }
->>>>>>> 25de15f... Finished our media queries
