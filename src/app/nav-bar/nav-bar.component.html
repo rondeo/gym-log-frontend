@@ -7,6 +7,7 @@
   </div>
 
   <nav class="menu-dropdown-container" [ngClass]="showClasses" *ngIf="userIsAuthenticated" (click)="toggleMenu()">
+<<<<<<< HEAD
 
     <div [ngClass]="showClasses" class="menu-branding" (click)="toggleMenu()">
       <div [ngClass]="showClasses" class="user-name" (click)="toggleMenu()">{{userName}}</div>
@@ -16,13 +17,20 @@
       <div [ngClass]="showClasses" class="log-out" (click)="onLogout()">Logout</div>
     </div>
 
+=======
+>>>>>>> 25de15f... Finished our media queries
     <ul class="nav-menu" (click)="toggleMenu()">
       <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/workout-history" (click)="toggleMenu()">Home</a></li>
       <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/routines" (click)="toggleMenu()">Routines</a></li>
       <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/create-routine" (click)="toggleMenu()">Add Routine</a></li>
       <li [ngClass]="showClasses" class="nav-menu-item"><a routerLink="/log-workout" (click)="toggleMenu()">Log Workout</a></li>
     </ul>
-
+    <div [ngClass]="showClasses" class="menu-branding" (click)="toggleMenu()">
+      <div class="user-name" [ngClass]="showClasses" (click)="toggleMenu()">{{userName}}</div>
+      <label class="portrait" [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(http://localhost:8080/uploads/' + avatar + ')'">
+        <input class="portrait" [ngClass]="showClasses" *ngIf="avatar" [style.background]="'url(http://localhost:8080/uploads/' + avatar + ')'" type="file" (change)="onFileSelected($event)">
+      </label>
+      <div [ngClass]="showClasses" class="log-out" (click)="onLogout()">Logout</div>
+    </div>
   </nav>
-
 </div>
